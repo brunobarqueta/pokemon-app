@@ -25,5 +25,6 @@ To install the Pokémon app, follow these steps:
 - The PokéAPI: https://pokeapi.co/ was used to fetch data.
 - Javascript local storage was used to handle the Pokémon Favorites list.
 - The UI Framework choosed was Tailwindcss.
+- Other Frameworks/Libraries used were Vite.js, React Router Dom, Heroicons.
 - The App is responsive.
 - There are comments all over the code.
