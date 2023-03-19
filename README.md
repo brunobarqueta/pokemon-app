@@ -17,7 +17,7 @@ To install the Pokémon app, follow these steps:
 1. Clone the repository to your local machine.
 2. Navigate to the directory where the repository was cloned.
 3. Install the necessary dependencies using `npm install`.
-4. Start the app using `npm start`.
+4. Start the app using `npm run dev`.
 
 ## Technical Requirements
 
