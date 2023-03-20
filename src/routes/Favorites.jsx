@@ -4,52 +4,35 @@ import { Link } from 'react-router-dom';
 import PokeCard from '../components/PokeCard';
 
 const Favorites = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [favorites, setFavorites] = useState([]);
-    const [pokemonData, setPokemonData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true); // useState hook to set the loading state
+    const [favorites, setFavorites] = useState([]); // useState hook to store the list of favorite Pokemon
+    const [pokemonData, setPokemonData] = useState([]); // useState hook to store the data of favorite Pokemon
 
     useEffect(() => {
-        const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        setFavorites(storedFavorites);
+        const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || []; // retrieve the stored list of favorite Pokemon from local storage or set an empty array
+        setFavorites(storedFavorites); // set the favorites state to the retrieved list
     }, []);
 
     useEffect(() => {
-        console.log("entrei no useeffect")
-        const fetchData = async () => {
-            const data = await Promise.all(
+        const fetchData = async () => { // define an async function to fetch the data of each favorite Pokemon
+            const data = await Promise.all( // execute all the fetch requests simultaneously and wait for them to complete
                 favorites.map((item) => {
-                    console.log(item)
                     return fetch(`https://pokeapi.co/api/v2/pokemon/${item}/`)
                         .then((response) => response.json())
                 })
             );
-            setIsLoading(false);
-            setPokemonData(data);
+            setIsLoading(false); // set the loading state to false
+            setPokemonData(data); // set the Pokemon data state to the fetched data
         };
 
-        fetchData();
-    }, [favorites]);
-
-    const addFavorite = (pokemonId) => {
-        if (!favorites.includes(pokemonId)) {
-            const newFavorites = [...favorites, pokemonId];
-            setFavorites(newFavorites);
-            localStorage.setItem('favorites', JSON.stringify(newFavorites));
-        }
-    };
-
-    const removeFavorite = (pokemonId) => {
-        const newFavorites = favorites.filter((id) => id !== pokemonId);
-        setFavorites(newFavorites);
-        localStorage.setItem('favorites', JSON.stringify(newFavorites));
-    };
+        fetchData(); // execute the fetchData function
+    }, [favorites]); // run the effect only when the favorites state changes
 
     if (isLoading) {
-        return <p>Loading...</p>;
+        return <p>Loading...</p>; // render a loading message while the data is being fetched
     }
-    console.log(pokemonData)
     return (
-        <div>
+        <div className="text-gray-700">
             <Link to="/" className="float-left bg-white py-2 px-4 rounded shadow hover:scale-110 transition-all duration-300">
                 <ArrowLeftIcon className="w-5 h-5 transform" />
             </Link>
@@ -57,7 +40,7 @@ const Favorites = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 mt-20">
                 {pokemonData.map((data) => (
                     <Link to={`/pokeinfo/${data.name}`} key={data.id}>
-                        <PokeCard data={data} favorite={true}/>
+                        <PokeCard data={data} favorite={true}/> // render a PokeCard component with the data of each favorite Pokemon
                     </Link>
                 ))}
             </div>
