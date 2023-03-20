@@ -73,7 +73,7 @@ function App() {
         <p className="text-center text-xl mt-20">Loading...</p>
       }
       <div className="flex justify-center mt-10">
-        // Render the Pagination component with the generated page numbers and event handlers
+        {/* Render the Pagination component with the generated page numbers and event handlers */}
         <Pagination
           pageNumbers={pageNumbers}
           offset={offset}

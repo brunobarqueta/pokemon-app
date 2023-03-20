@@ -40,7 +40,8 @@ const Favorites = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 mt-20">
                 {pokemonData.map((data) => (
                     <Link to={`/pokeinfo/${data.name}`} key={data.id}>
-                        <PokeCard data={data} favorite={true}/> // render a PokeCard component with the data of each favorite Pokemon
+                        {/*  render a PokeCard component with the data of each favorite Pokemon */}
+                        <PokeCard data={data} favorite={true}/> 
                     </Link>
                 ))}
             </div>
