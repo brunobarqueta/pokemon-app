@@ -31,17 +31,20 @@ const Favorites = () => {
     if (isLoading) {
         return <p>Loading...</p>; // render a loading message while the data is being fetched
     }
+    
     return (
         <div className="text-gray-700">
-            <Link to="/" className="float-left bg-white py-2 px-4 rounded shadow hover:scale-110 transition-all duration-300">
-                <ArrowLeftIcon className="w-5 h-5 transform" />
-            </Link>
-            <p className="text-4xl font-bold">Favorites</p>
+            <div>
+                <Link to="/" className="float-left bg-white py-2 px-4 rounded shadow hover:scale-110 transition-all duration-300">
+                    <ArrowLeftIcon className="w-5 h-5 transform" />
+                </Link>
+                <p className="text-4xl font-bold">Favorites</p>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 mt-20">
                 {pokemonData.map((data) => (
-                    <Link to={`/pokeinfo/${data.name}`} key={data.id}>
+                    <Link to={`/pokeinfo/${data.name}`} key={data.id} className="flex flex-col items-center justify-center">
                         {/*  render a PokeCard component with the data of each favorite Pokemon */}
-                        <PokeCard data={data} favorite={true}/> 
+                        <PokeCard data={data} favorite={true} />
                     </Link>
                 ))}
             </div>

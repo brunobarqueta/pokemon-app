@@ -56,7 +56,7 @@ function App() {
   return (
     <div className="App text-gray-700">
       <p className="text-4xl font-bold">Pokemón App</p>
-      <Link to="/favorites" className="float-right">
+      <Link to="/favorites">
         <FavoriteButton />
       </Link>
       {
