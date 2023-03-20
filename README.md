@@ -1,7 +1,7 @@
 # Pokémon App
 
 This is a repository for a web-based Pokémon app, created by Bruno Barqueta. The app allows users to search for and view information about different Pokémon characters.
-
+https://pokemon-app-eight-liard.vercel.app/pokeinfo/pidgeot
 
 ## Installation
 
