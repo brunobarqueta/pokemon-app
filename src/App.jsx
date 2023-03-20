@@ -64,7 +64,7 @@ function App() {
         pokemonData.length > 0 ? (
           <div className={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 mt-20"}>
             {pokemonData.map((data) => (
-              <Link to={`/pokeinfo/${data.name}`} key={data.id}>
+              <Link to={`/pokeinfo/${data.name}`} key={data.id} className="flex flex-col items-center justify-center">
                 <PokeCard data={data} />
               </Link>
             ))}
